@@ -1,0 +1,27 @@
+{% load static %}
+{% load bootstrap_themes %}
+{% bootstrap_styles theme='default' type='min.css' %}
+{% bootstrap_styles theme='cosmo' type='css' %}
+{% bootstrap_styles theme='united' type='less' %}
+{% bootstrap_script use_min=True %}
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<h1>These are our companies</h1>
+<p>Welcome to my second Django project!</p>
+<img src="{% static "app2/images/Cute_dog.jpg" %}" alt="Uh Oh, didn't show!">
+<ul>
+    {% for x in myemployees %}
+    <li> {{ x.company }}</li>
+    <li>{{ x.department }}</li>
+    <li>{{ x.employeeID }}</li>
+   
+    {% endfor %}
+  </ul>
+</body>
+</html>
+

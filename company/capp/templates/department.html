@@ -1,0 +1,39 @@
+{% extends "master.html" %}
+
+{% block title %}
+  My departments
+{% endblock %}
+
+{% block body %}
+
+    <h1>These are our companies</h1>
+    <div class="container mt-3">
+      <h2>Department Table</h2>
+      <p>This is the table of employees</p>            
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Department</th>
+       
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in myemployees %}
+          <tr>
+            <td>{{ x.department }}</td>
+          </tr>
+          
+         
+          {% endfor %}
+          
+          
+        </tbody>
+      </table>
+    </div>
+
+    {% endblock %}
+
+    {% block url %}"/employee"{% endblock %}
+    {% block link %}employee{% endblock %}
+
+

@@ -1,0 +1,20 @@
+{% load static %}
+{% load bootstrap_themes %}
+{% bootstrap_styles theme='default' type='min.css' %}
+{% bootstrap_styles theme='cosmo' type='css' %}
+{% bootstrap_styles theme='united' type='less' %}
+{% bootstrap_script use_min=True %}
+<form action="/nameform/" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+<div class="form-group">
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+</div>
+{% endfor %}
+ <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+

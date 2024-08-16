@@ -1,0 +1,26 @@
+{% load static %}
+{% load bootstrap_themes %}
+{% bootstrap_styles theme='default' type='min.css' %}
+{% bootstrap_styles theme='cosmo' type='css' %}
+{% bootstrap_styles theme='united' type='less' %}
+{% bootstrap_script use_min=True %}
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <title>{% block title %}{% endblock %}</title>
+<body>
+  
+    {% block body %}{% endblock %}
+
+
+<img src="{% static "app2/images/Cute_dog.jpg" %}" alt="Uh Oh, didn't show!">
+<p>Go to <a href={% block url %}{% endblock %}
+>{% block link %}{% endblock %}
+</a></p>
+
+<p>Go to <a href="/">Main </a></p>
+
+</body>
+</html>
+

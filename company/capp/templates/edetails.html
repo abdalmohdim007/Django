@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>this is my second project!</h1>
+<p>Welcome to my second Django project!</p>
+<img src="{% static "app2/images/Cute_dog.jpg" %}" alt="Uh Oh, didn't show!">
+<ul>
+    {% for x in mymembers %}
+    <li> {{ x.TA }}</li>
+    <li>{{ x.BA }}</li>
+    <li>{{ x.AA }}</li>
+    <li>{{ x.DA }}</li>
+    {% endfor %}
+  </ul>
+  
+
+</body>
+</html>

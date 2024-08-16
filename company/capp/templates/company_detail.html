@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+    {% block title %}Company detail{% endblock %}
+    {% block content %}
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="mb-4 text-center">Company Detail</h1>
+                <div class="list-group">
+                    <div class="list-group-item detail-row">
+                        <strong>Company:</strong> {{ company.company }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Department:</strong> {{ company.department }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Employee ID:</strong> {{ company.employeeID }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Employee Last Name:</strong> {{ company.employee_lastname }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Employee First Name:</strong> {{ company.employee_firstname }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Birthdate:</strong> {{ company.birthdate }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Vacations:</strong> {{ company.vacations }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Used Vacations:</strong> {{ company.used_vacations }}
+                    </div>
+                    <div class="list-group-item detail-row">
+                        <strong>Salary:</strong> {{ company.salary }}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'company_update' company.pk %}" class="btn btn-primary">Update Company</a>
+                    <a href="{% url 'company_list' %}" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS (Optional) -->
+</body>
+{% endblock %}
