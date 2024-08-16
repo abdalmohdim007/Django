@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Records</title>
+</head>
+<body>
+    <h1>Attendance Records</h1>
+    <ul>
+        {% for record in attendance_records %}
+            <li>{{ record.employee.user.first_name }} - {{ record.date }}: {{ record.status }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

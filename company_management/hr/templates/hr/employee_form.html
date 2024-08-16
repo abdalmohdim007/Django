@@ -1,0 +1,31 @@
+{% extends "hr/base.html" %}
+    {% block title %}Update Employee,Add Employee{% endblock %}
+    
+
+    {% block content %}
+    <div class="container mt-8">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Update Employee / Add Employee</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success btn-block">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'employee_list' %}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    
+
