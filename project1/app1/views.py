@@ -3,7 +3,7 @@ from django.template import loader
 from .models import Member
 
 def app1(request):
-  help_dict = {'help_me':"Hello I am from Help Please 2"}
+  help_dict = {'help_me':"Hello I am from Help Please 3"}
   template = loader.get_template('app1/test.html')
   return HttpResponse(template.render(help_dict, request))
 
