@@ -1,0 +1,30 @@
+{% extends "TODO/base.html" %}
+
+{% block title %}Task Detail{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">{{ task.name }}</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>Description:</strong> {{ task.description }}</p>
+            <p class="card-text"><strong>Status:</strong> <span class="badge bg-info">{{ task.status }}</span></p>
+            <p class="card-text"><strong>Start Date:</strong> {{ task.start_date|date:"F j, Y, g:i a" }}</p>
+            <p class="card-text"><strong>Finish Date:</strong> {{ task.finish_date|date:"F j, Y, g:i a" }}</p>
+            <p class="card-text"><strong>Do Date:</strong> {{ task.do_date|date:"F j, Y, g:i a" }}</p>
+
+            {% if task.file %}
+                <a href="{{ task.file.url }}" class="btn btn-outline-secondary mt-3">Download File</a>
+            {% endif %}
+        </div>
+        <div class="card-footer text-end">
+            <a href="{% url 'task_update' task.pk %}" class="btn btn-warning me-2">Edit</a>
+            <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+    

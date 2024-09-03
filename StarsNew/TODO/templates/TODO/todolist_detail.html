@@ -1,0 +1,17 @@
+{% extends "TODO/base.html" %}
+    {% block title %}Dtail{% endblock %}
+    
+
+    {% block content %}
+    <h2>{{ todolist.name }}</h2>
+<p>{{ todolist.description }}</p>
+<h3>Tasks</h3>
+<ul>
+    {% for task in todolist.tasks.all %}
+        <li>{{ task.name }} - {{ task.status }}</li>
+    {% endfor %}
+</ul>
+<a class="btn btn-success btn-sm" href="{% url 'todolist_update' todolist.pk %}">Edit</a>
+<a class="btn btn-danger btn-sm" href="{% url 'todolist_delete' todolist.pk %}">Delete</a>
+    {% endblock %}
+    
