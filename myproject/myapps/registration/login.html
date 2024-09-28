@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Animated card for the login form -->
+            <div class="card shadow-lg p-4" style="border-radius: 20px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white;">
+                <h2 class="text-center mb-4" style="font-family: 'Poppins', sans-serif;">Login to Your Account</h2>
+                
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <p>Your username and password didn't match. Please try again.</p>
+                    </div>
+                {% endif %}
+                
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <div class="alert alert-warning">
+                            <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">
+                            <p>Please login to see this page.</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <!-- Login form -->
+                <form method="post" action="{% url 'login' %}" class="animate__animated animate__fadeIn">
+                    {% csrf_token %}
+                    <table style="width: 100%; margin: 0 auto;">
+                        <tr>
+                            <td style="padding: 8px; text-align: right;">{{ form.username.label_tag }}</td>
+                            <td style="padding: 8px;">{{ form.username }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; text-align: right;">{{ form.password.label_tag }}</td>
+                            <td style="padding: 8px;">{{ form.password }}</td>
+                        </tr>
+                    </table>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-lg btn-light btn-block shadow-lg" style="width: 100%; border-radius: 30px;">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </div>
+
+                    <input type="hidden" name="next" value="{{ next }}">
+                </form>
+
+                <!-- Skip button (disabled) -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-danger" disabled>Skip</button>
+                    <span class="text-muted d-block mt-2">>>> (The skip process is not currently effective)</span>
+                </div>
+
+                <!-- Forgot password and Sign up links -->
+                <p class="text-center mt-4">
+                    <a href="{% url 'password_reset' %}" class="text-decoration-none text-light">Lost password?</a>
+                    <a href="{% url 'sign_up' %}" class="btn btn-dark mt-3">>>> Register From Here</a>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Background animation -->
+<style>
+    body {
+        background: #e0eafc; /* Light blue background */
+        background: linear-gradient(180deg, #e0eafc 0%, #cfdef3 100%);
+        font-family: 'Poppins', sans-serif;
+    }
+    .card {
+        animation: bounceIn 1.2s ease-out;
+    }
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.3);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+
+<!-- Include font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+{% endblock %}
+
