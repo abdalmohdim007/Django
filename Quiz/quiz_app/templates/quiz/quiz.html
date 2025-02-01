@@ -1,0 +1,82 @@
+{% extends 'quiz/base.html' %}
+
+{% block extra_css %}
+<style>
+    .submit-button {
+        background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+        border: none;
+        border-radius: 25px;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        margin-top: 2rem;
+    }
+
+    .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    }
+
+    .submit-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+    }
+
+    .submit-button::after {
+        content: '🚀';
+        position: absolute;
+        right: -30px;
+        transition: all 0.3s ease;
+    }
+
+    .submit-button:hover::after {
+        right: 20px;
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 576px) {
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+        
+        .submit-button::after {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quiz-container p-4 text-center">
+    <h1 class="mb-4">🔥 Ultimate Quiz Challenge 🔥</h1>
+    <form method="post" action="{% url 'submit_quiz' %}">
+        {% csrf_token %}
+        {% for question in questions %}
+            <div class="mb-3">
+                <p class="question">{{ question.text }}</p>
+                {% for answer in question.answer_set.all %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" 
+                               name="question_{{ question.id }}" 
+                               value="{{ answer.id }}" 
+                               id="answer_{{ answer.id }}"
+                               required>
+                        <label class="form-check-label" for="answer_{{ answer.id }}">
+                            {{ answer.text }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn submit-button">
+            Launch Your Answers
+        </button>
+    </form>
+</div>
+{% endblock %}
