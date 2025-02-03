@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+# Update settings.py
+import os
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -138,3 +143,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Use console 
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'your_email@gmail.com'
 # EMAIL_HOST_PASSWORD = 'your_password'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'abedalmohdim@gmail.com'
+EMAIL_HOST_PASSWORD = 'lecy qqnf fcbr ippi'
