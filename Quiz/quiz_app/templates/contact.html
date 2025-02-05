@@ -1,0 +1,62 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 fw-bold">📩 Get in Touch</h1>
+        <p class="lead text-muted">We’d love to hear from you! Reach out anytime.</p>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Contact Form -->
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <h4 class="mb-3 text-primary">📬 Send Us a Message</h4>
+                <form method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Your Name</label>
+                        <input type="text" name="name" class="form-control rounded-3" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Your Email</label>
+                        <input type="email" name="email" class="form-control rounded-3" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Message</label>
+                        <textarea name="message" class="form-control rounded-3" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 fw-bold">
+                        📨 Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Contact Image & Location -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <img src="{% static 'Contact.png' %}" class="img-fluid rounded shadow-lg mb-3" alt="Contact Us">
+            
+            <!-- Google Map -->
+            <div class="ratio ratio-16x9 w-100 shadow-lg rounded">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509476!2d144.95373631531544!3d-37.817209979751774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f9fdfb%3A0xa748469ae7b3f94a!2sMelbourne%20City%20Centre!5e0!3m2!1sen!2sau!4v1630923272333!5m2!1sen!2sau" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Style Enhancements -->
+<style>
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+        transition: 0.3s;
+    }
+</style>
+{% endblock %}

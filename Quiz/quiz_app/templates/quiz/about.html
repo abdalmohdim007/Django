@@ -1,0 +1,64 @@
+
+
+{% extends 'quiz/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="display-4">🚀 About Us 🚀</h1>
+    <p class="lead">Welcome to the Abood's Quiz Challenge!</p>
+
+    <div class="about-section mt-4">
+        <p>
+            Our mission is to make learning fun and engaging. Whether you’re testing your knowledge 
+            or challenging your friends, we’re here to bring excitement to quizzes! 🎯
+        </p>
+        <p>
+            Founded in 2024, our platform offers a variety of quizzes covering multiple subjects. 
+            We believe in making education entertaining! ✨
+        </p>
+    </div>
+    {% load static %}
+    <div class="team-section mt-5">
+        <h2>Meet Our Team</h2>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{%  static 'Aboodahm.png' %}" class="card-img-top" alt="Team Member">
+                    <div class="card-body">
+                        <h5 class="card-title">Abdalmohdi Massadeh</h5>
+                        <p class="card-text">Founder & Developer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{%  static 'Ahmadpic.png' %}" class="card-img-top" alt="Team Member">
+                    <div class="card-body">
+                        <h5 class="card-title">Ahmad Massadeh(Abood's Father)</h5>
+                        <p class="card-text">Chief Inspiration Officer 🦜</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="{% url 'quiz' %}" class="btn btn-primary mt-4">Start Your Quiz!</a>
+</div>
+
+<style>
+    .about-section p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .card-img-top {
+        height: 150px;
+        object-fit: cover;
+    }
+</style>
+
+{% endblock %}

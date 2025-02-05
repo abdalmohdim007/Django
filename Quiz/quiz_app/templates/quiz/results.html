@@ -1,0 +1,69 @@
+{% extends 'quiz/base.html' %}
+
+{% block extra_css %}
+<style>
+    body {
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        overflow: hidden;
+    }
+    .results-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        position: relative;
+        margin-top: 100px;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    h1 {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
+        animation: bounce 2s infinite;
+    }
+    h2 {
+        font-size: 1.8rem;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+    .btn-custom {
+        display: inline-block;
+        background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: all 0.3s;
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    }
+    .btn-custom:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(255, 107, 107, 0.5);
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="results-container">
+    <h1>🎉 Quiz Completed! 🎉</h1>
+    <p class="lead">You just conquered the Ultimate Quiz Challenge!</p>
+    <h2>Your Score: <span style="color: black;">{{ score }} / {{ total }}</span></h2>
+    <a href="{% url 'quiz' %}" class="btn-custom mt-3">🔄 Try Again</a>
+</div>
+{% endblock %}
